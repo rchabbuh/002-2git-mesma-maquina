@@ -1,4 +1,6 @@
-# GIT / GIT HUB - Usando 2 contas GIT na mesma máquina / Using 2 GIT accounts on the same machine
+# GIT / GIT HUB
+# Usando 2 contas GIT na mesma máquina
+# Using 2 GIT accounts on the same machine
 
 ## 🔹Configuração Inicial (Executar uma vez) / Initial Setup (Run once)
 
@@ -18,21 +20,21 @@ _Check the SSH keys you currently have on your machine. Use the command in bash.
 ls -al ~/.ssh
 ```
 
-Caso você não tenha nenhuma chave SSH Criada, não aparecerá nada. Se você ja tem, algo como a mensagem abaixo será exibida.  
-_If you don't have any SSH keys created, nothing will appear. If you already have one, something like the message below will be displayed._
+Caso você não tenha nenhuma chave SSH Criada, não aparecerá nada. Se você ja tem, elas serão listadas com o comando acima.  
+_If you don't have any SSH keys created, nothing will appear. If you already have them, they will be listed with the command above._
 
 Para gerar uma chave ssh você deve usar o comando abaixo.  
 _To generate an SSH key, you must use the command below._
 
 ```python
-ssh-keygen -t ed25519 -C "user.email" -f ~/.ssh/id_ed25519_"Key Name"
+ssh-keygen -t ed25519 -C "user.email" -f ~/.ssh/id_ed25519_"Key_Name"
 ```
 
 Para gerar uma segunda chave SSH, os nomes das chaves devem ser diferentes, logo você pode personalizar com o mesmo comando, mudando o "nome da chave", ao final do código.  
 _To generate a second SSH key, the key names must be different, so you can customize it with the same command, changing the "key name" at the end of the code._
 
 ```python
-ssh-keygen -t ed25519 -C "user.email" -f ~/.ssh/id_ed25519_"New Key Name"
+ssh-keygen -t ed25519 -C "user.email" -f ~/.ssh/id_ed25519_"Key_Name_2"
 ```
 
 Isto fará com que tenhamos 2 chaves cadastradas em nosso computador. Você pode checar as chaves no caminho  
@@ -49,15 +51,15 @@ _By naming the two keys differently, we will have to create a host to manage the
 touch .ssh/config
 ```
 
-Ao criar o arquivo, abra-o com o vscode, ou algum outro software de edição de codigos.  
-_When creating the file, open it with VS Code, or some other code editing software._
+Ao criar o arquivo, abra-o com o vscode, ou algum outro software de edição de codigos, você deve digitar o codigo abaixo e substituir conforme seus nomes de chaves.  
+_When creating the file, open it with VS Code, or some other code editing software, and type the code below, replacing the keys according to their names._
 
 ```Python
 # New SSH configuration
-Host github.com-"New Key Name"
+Host github.com-"Key_Name_2"
     HostName github.com
     User git
-    IdentityFile ~/.ssh/id_ed25519_"New Key Name"
+    IdentityFile ~/.ssh/id_ed25519_"Key_Name_2"
 ```
 
 Pulando uma linha, se pode adicionar quantos hosts precisarmos, mas a atenção aqui é endereçar a chave correta para cada bloco de códigos.  
